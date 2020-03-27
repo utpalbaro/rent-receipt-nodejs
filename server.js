@@ -34,7 +34,6 @@ app.post('/', function (req, res) {
                             address: req.body.address,
                             owner: req.body.owner,
                             });
-    console.log(req.body.tenant);
 });
 
 app.listen(8080, () => {

@@ -11,6 +11,9 @@ Clone anywhere in your computer
 ```bash
 node server.js
 ```
+3. From any browser visit http://localhost:8080
+4. Enter your details and submit
+5. Take a print out
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
