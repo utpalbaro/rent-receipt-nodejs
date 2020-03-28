@@ -19,15 +19,26 @@ let getLastDateOfMonth = function (date) {
 // export this function
 let getDatesBetweenDates = function (start_date, end_date, frequency) {
     let dates = [];
+    let delta = 1;  // default is monthly
     switch (frequency.toLowerCase())
     {
         case 'monthly':
-            getMonthlyDates(start_date, end_date, dates);
+            delta = 1;
+            break;
+        case 'quarterly':
+            delta = 3;
+            break;
+        case 'biennially':
+            delta = 6;
+            break;
+        case 'annually':
+            delta = 12;
             break;
         default:
             break;
     }
 
+    getDatesBetween(start_date, end_date, delta, dates);
     return dates;
 }
 
@@ -39,8 +50,7 @@ let customDateFormat = function(date) {
     return `${mm} ${dd}, ${yy}`
 }
 
-function getMonthlyDates(start_date, end_date, dates) {
-
+function getDatesBetween(start_date, end_date, delta, dates) {
     if (start_date > end_date)
         return;
 
@@ -49,10 +59,17 @@ function getMonthlyDates(start_date, end_date, dates) {
     let current_date = new Date(start_date.getTime());
 
     while (current_date <= end_date) {
-        datesObj['start_date'] = customDateFormat(current_date);
-        datesObj['end_date'] = customDateFormat(getLastDateOfMonth(current_date));
-        current_date = new Date(current_date.getFullYear(), current_date.getMonth() + 1, 1);
-        datesObj['assessment_date'] = customDateFormat(current_date);
+        // start_date is the start of the month
+        datesObj.start_date = customDateFormat(current_date);
+
+        // end_date is one day less than the starting date of the next month
+        current_date = new Date(current_date.getFullYear(), current_date.getMonth() + delta, 0);
+        datesObj.end_date = customDateFormat(current_date);
+
+        current_date.setDate(current_date.getDate() + 1);
+        datesObj.assessment_date = customDateFormat(current_date);
+
+        datesObj.duration = delta;
 
         dates.push(Object.assign({}, datesObj));
     }
@@ -64,6 +81,14 @@ function getMonthlyDates(start_date, end_date, dates) {
     current_date = new Date(end_date.getTime());
     current_date.setDate(end_date.getDate() + 1);
     dates[dates.length - 1].assessment_date = customDateFormat(current_date);
+
+    // fix the duration if less than delta
+    let difference = diffInMonths(start_date, end_date);
+    dates[dates.length - 1].duration = difference < delta ? difference : delta;
+}
+
+function diffInMonths(start_date, end_date) {
+    return Math.ceil((end_date - start_date)/(60*60*24*30*1000))
 }
 
 module.exports = { 

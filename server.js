@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
     */
     let datesInBetween = dateutils.getDatesBetweenDates( new Date(req.body.start_date), 
                                                 new Date(req.body.end_date), 
-                                                'monthly');
+                                                req.body.frequency);
 
     res.render('receipt', { dates: datesInBetween,
                             amount: req.body.amount,
