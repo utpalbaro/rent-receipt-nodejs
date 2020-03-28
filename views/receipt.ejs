@@ -20,14 +20,14 @@
 
             text += `<div id="receipt_block" style="border: 1px solid black">
                     <h3>RENT RECEIPT</h3>
-                    Date: ${ assessmentdate }<br><br>
+                    <p>Date: ${ assessmentdate }</p>
                 
-                    Received sum of <b>Rs <%= amount %></b> from <b><%= tenant %></b> towards the rent of property located at 
+                    <p>Received sum of <b>Rs <%= amount %></b> from <b><%= tenant %></b> towards the rent of property located at 
                     <b><%= address %></b> for the period from <b>${ start_date }</b> 
-                    to <b>${ end_date }</b>. 
-                    <br><br><br><br>
-                    <b><% owner %></b><br>
-                    (Landlord)
+                    to <b>${ end_date }</b>.</p> 
+                    <br>
+                    <p><b><%= owner %></b><br>
+                    (Landlord)</p>
                 </div>`
         }
 
