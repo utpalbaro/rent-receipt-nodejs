@@ -74,6 +74,10 @@ function getDatesBetween(start_date, end_date, delta, dates) {
         dates.push(Object.assign({}, datesObj));
     }
 
+    // current_date overshoots end_date by diff months
+    let diff = diffInMonths(end_date, current_date);
+    dates[dates.length - 1].duration = delta - diff + 1;
+
     // set the end_date to the user supplied date
     dates[dates.length - 1].end_date = customDateFormat(end_date);
 
@@ -81,14 +85,10 @@ function getDatesBetween(start_date, end_date, delta, dates) {
     current_date = new Date(end_date.getTime());
     current_date.setDate(end_date.getDate() + 1);
     dates[dates.length - 1].assessment_date = customDateFormat(current_date);
-
-    // fix the duration if less than delta
-    let difference = diffInMonths(start_date, end_date);
-    dates[dates.length - 1].duration = difference < delta ? difference : delta;
 }
 
 function diffInMonths(start_date, end_date) {
-    return Math.ceil((end_date - start_date)/(60*60*24*30*1000))
+    return Math.ceil((end_date - start_date)/(60*60*24*30*1000));
 }
 
 module.exports = { 

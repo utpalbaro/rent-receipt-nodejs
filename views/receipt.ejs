@@ -16,12 +16,13 @@
             let start_date = dates[i].start_date;
             let end_date = dates[i].end_date;
             let assessmentdate = dates[i].assessment_date;
+            let receipt_amount = dates[i].duration * <%= amount %>;
 
             text += `<div id="receipt_block" style="border: 1px solid black">
                     <h3>RENT RECEIPT</h3>
                     <p>Date: ${ assessmentdate }</p>
                 
-                    <p>Received sum of <b>Rs <%= amount %></b> from <b><%= tenant %></b> towards the rent of property located at 
+                    <p>Received sum of <b>Rs ${ receipt_amount }</b> from <b><%= tenant %></b> towards the rent of property located at 
                     <b><%= address %></b> for the period from <b>${ start_date }</b> 
                     to <b>${ end_date }</b>.</p> 
                     <br>

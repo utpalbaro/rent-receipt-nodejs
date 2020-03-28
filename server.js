@@ -36,6 +36,11 @@ app.post('/', function (req, res) {
                             });
 });
 
-app.listen(8080, () => {
-    console.log('Server listening at port 8080');
+let port_number = 8080;
+if (process.argv[2] != undefined && !isNaN(process.argv[2])) {
+    port_number = process.argv[2];
+}
+
+app.listen(port_number, () => {
+    console.log(`Server listening at port ${port_number}`);
 });
