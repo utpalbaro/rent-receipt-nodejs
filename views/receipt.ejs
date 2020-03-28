@@ -7,16 +7,15 @@
     </head>
     
     <body>
-        <script src='/javascript/date_scripts.js'></script>
         <script>
         
         let text = '';
         let dates = <%- JSON.stringify(dates) %>;
 
-        for( let i = 0; i < dates.length - 1; i++ ) {
-            let start_date = customDateFormat(new Date(dates[i]));
-            let end_date = customDateFormat(getLastDateOfMonth(new Date(dates[i])));
-            let assessmentdate = customDateFormat(new Date(dates[i+1]));
+        for( let i = 0; i < dates.length; i++ ) {
+            let start_date = dates[i].start_date;
+            let end_date = dates[i].end_date;
+            let assessmentdate = dates[i].assessment_date;
 
             text += `<div id="receipt_block" style="border: 1px solid black">
                     <h3>RENT RECEIPT</h3>
