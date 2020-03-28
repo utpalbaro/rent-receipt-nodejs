@@ -1,11 +1,17 @@
 # Rent receipt generator
-Server-Client architecture rent receipt generator program written in NodeJS
+A rent receipt generator program to generate receipts between any two given dates.
+
+## Prerequisites
+Install the following if you don't have them already
+
+1. [Git](https://git-scm.com/downloads) - Needed if you want to clone the repository. Otherwise, simply download the sources as .zip and extract
+2. [Node.js](https://nodejs.org/en/download/) - Needed to run the program
 
 ## Installation
-Clone anywhere in your computer
+Clone or download and extract anywhere in your computer
 
 ## Usage
-1. Go to the root directory, where this README file is
+1. Go to the root directory from command line, where this README file is
 2. Run the following in command line
 
 ```bash
