@@ -4,13 +4,28 @@
   "description": "\"A project for generating rent receipts\"",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node server.js"
   },
   "author": "Utpal Baro",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utpalbaro/rent-receipt-nodejs.git"
+  },
+  "keywords": [
+    "rent",
+    "receipt",
+    "generator"
+  ],
+  "bugs": {
+    "url": "https://github.com/utpalbaro/rent-receipt-nodejs/issues"
+  },
+  "homepage": "https://github.com/utpalbaro/rent-receipt-nodejs#readme"
 }
