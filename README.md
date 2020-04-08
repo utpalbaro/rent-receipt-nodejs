@@ -21,5 +21,10 @@ node server.js
 4. Enter your details and submit
 5. Take a print out
 
+Note: 8080 is the default port number. Supply the port number for a custom one
+```bash
+node server.js [port_number]
+```
+
 ## License
 [MIT](https://opensource.org/licenses/MIT)
